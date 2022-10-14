@@ -4,4 +4,6 @@ RUN npm i -g express
 
 USER 10050
 
-ENTRYPOINT ["node", "server.js"]
+COPY server.js server.js
+
+ENTRYPOINT ["node", "./server.js"]
