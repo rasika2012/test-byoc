@@ -1,9 +1,10 @@
 FROM node:18-alpine3.15
 
-RUN npm i -g express
+WORKDIR /app
+
+COPY ./ /app/
+RUN npm ci
 
 USER 10050
 
-COPY server.js server.js
-
-ENTRYPOINT ["node", "./server.js"]
+ENTRYPOINT ["npm", "run", "start"]
