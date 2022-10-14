@@ -7,4 +7,4 @@ RUN npm ci
 
 USER 10050
 
-ENTRYPOINT ["npm", "run", "start"]
+ENTRYPOINT ["node", "./server.js"]
