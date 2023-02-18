@@ -1,10 +1,18 @@
-FROM node:18-alpine3.15
 
+# Use the official Python image as the base image
+FROM python:3.9-slim-buster
+USER 10050
+# Set the working directory in the container
 WORKDIR /app
 
-COPY ./ /app/
-RUN npm ci
+# Copy the server file into the container
+COPY test.py .
 
-USER 10050
+# Install the required packages
+RUN pip install svgwrite
 
-ENTRYPOINT ["node", "./server.js"]
+# Expose port 8000 for the server to listen on
+EXPOSE 8000
+
+# Start the server when the container is run
+CMD ["python", "test.py"]
